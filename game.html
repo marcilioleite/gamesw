@@ -27,6 +27,7 @@
 			var ctx = canvas.getContext("2d")
 
 			var paused = false
+			var _fps = 30;
 
 			var textX = 50;
 			var textY = 50;
@@ -39,27 +40,34 @@
 			function draw(){
 				ctx.clearRect(0, 0, canvas.width, canvas.height);
 				ctx.fillStyle = "#000";
-  				ctx.fillText("Sup Bro!", textX, textY);
+  				ctx.fillText("Hello, World!", textX, textY);
 			}
 			
-			var _fps = 30;
-			setInterval(function(){
-				if (!paused){
-					update()
-					draw()
-				}
+			var gameLoop = window.setInterval(function(){
+				update()
+				draw()
 			}, 1000/_fps)
 			
 			/* Pausa quando a janela perde o foco */
 			window.onblur = function(){
 				paused = true
+				window.clearInterval(gameLoop)
 			}
 			   
 			/* Pressionar espaço para pausar/continuar o jogo */ 
 			document.onkeypress = function(e){
 				var e=window.event || e
 				if (e.charCode == 32){
-					paused = !paused
+					if (paused){
+						paused = false
+						gameLoop = window.setInterval(function(){
+							update()
+							draw()
+						}, 1000/_fps)
+					}else{
+						paused = true
+						window.clearInterval(gameLoop)
+					}
 				}
 			}
 		</script>

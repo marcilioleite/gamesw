@@ -1,4 +1,36 @@
 /**
+ * Game Clock
+ * 
+ * 	Game Clock to show timer. 
+ * 
+ * author: Marcilio Leite
+ */
+var Clock = Class.extend({
+	/**
+	 * Constructor
+	 * 
+	 * @param {Integer} x Clock's x
+	 * @param {Integer} y Clock's y
+	 */
+	init: function(x, y) {
+		this.x = x
+		this.y = y
+	},
+	/**
+	 * Draw Clock
+	 *  
+	 */
+	draw: function() {
+		graphics.font = "bold 30px Londrina Solid"
+		var minutes = Math.floor(gameinfo.elapsedTime / 60)
+			minutes = minutes > 9 ? minutes : "0"+minutes
+		var seconds = gameinfo.elapsedTime - minutes * 60
+			seconds = seconds > 9 ? seconds : "0"+seconds
+		graphics.fillText(minutes + ":" + seconds, this.x, this.y)
+	}	
+})
+
+/**
  * Game Character
  * 
  * 	A game base character type. 
@@ -37,11 +69,14 @@ var Character = Class.extend({
 	move: function(x, y) {
 		throw "Not implemented Character.move"
 	},
-});
+})
 
-var chara = new Character(10, 10, 139, 165, 'graphics/images/character.png')
-charas.push(chara)
+
+clock = new Clock(50, 50)
+
 /*
+var chara = new Character(100, 100, 139, 165, 'graphics/images/character.png')
+charas.push(chara)
 var Ninja = Character.extend({
 	init: function() {
 		this._super(false)

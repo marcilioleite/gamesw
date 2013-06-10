@@ -1,6 +1,7 @@
 var canvas = document.getElementById("game")
 var graphics = canvas.getContext("2d")
 
+var clock = null
 var charas = new Array()
 
 var gameinfo = {
@@ -11,6 +12,7 @@ var gameinfo = {
 }
 
 function update() {
+	
 }
 
 function draw() {
@@ -18,6 +20,7 @@ function draw() {
 	for (var i = 0; i < charas.length; i++) {
 		charas[i].draw()
 	}
+	if (clock) {clock.draw()}
 }
 
 function startTimer() {

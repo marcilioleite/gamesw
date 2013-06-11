@@ -17,10 +17,26 @@
 		<link rel="shortcut icon" href="/favicon.ico" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Londrina+Solid">
+		<style type="text/css">
+			body {
+				margin: 0;
+				padding: 0;
+				background: #cecece;
+			}
+			.container {
+				margin: 0 auto;
+				width: 800px;
+			}
+			canvas {
+				background: #fff;
+			}
+		</style>
 	</head>
 	<body>
-		<canvas id="game" width="800" height="600">
-		</canvas>
+		<div class="container">
+			<canvas id="game" width="800" height="600">
+			</canvas>
+		</div>
 		<script src="lib/jquery-2.0.2.min.js"></script>
 		<script src="core/game.js"></script>
 		<script src="core/app.js"></script>

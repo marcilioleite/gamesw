@@ -26,6 +26,9 @@ var Clock = Class.extend({
 			minutes = minutes > 9 ? minutes : "0"+minutes
 		var seconds = gameinfo.elapsedTime - minutes * 60
 			seconds = seconds > 9 ? seconds : "0"+seconds
+		graphics.fillStyle = "#FAD016"
+		graphics.shadowColor = "#000"
+		graphics.shadowOffsetY = 1
 		graphics.fillText(minutes + ":" + seconds, this.x, this.y)
 	}	
 })
@@ -67,16 +70,17 @@ var Character = Class.extend({
 	 *  
 	 */
 	move: function(x, y) {
-		throw "Not implemented Character.move"
+		this.x = Math.round(x - (this.width / 2))
+		this.y = Math.round(y - (this.height / 2))
 	},
 })
 
 
-clock = new Clock(50, 50)
+clock = new Clock(700, 50)
+var chara = new Character(100, 100, 139, 165, 'graphics/images/character.png')
+charas.push(chara) 
 
 /*
-var chara = new Character(100, 100, 139, 165, 'graphics/images/character.png')
-charas.push(chara)
 var Ninja = Character.extend({
 	init: function() {
 		this._super(false)

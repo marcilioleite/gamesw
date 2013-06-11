@@ -4,8 +4,8 @@ window.onblur = function() {
 
 document.onclick = function(mouse) {
 	var mouse = window.event || mouse
-	var x = mouse.clientX - canvas.offsetLeft
-    var y = mouse.clientY - canvas.offsetTop
+	var x = mouse.screenX - canvas.offsetLeft
+    var y = mouse.screenY - canvas.offsetTop
     
     for (var i = 0; i < charas.length; i++) {
     	if (!objectAt(charas[i], x, y)) {

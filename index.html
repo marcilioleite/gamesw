@@ -17,33 +17,11 @@
 		<link rel="shortcut icon" href="/favicon.ico" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Londrina+Solid">
-		<style type="text/css">
-			body {
-				margin: 0;
-				padding: 0;
-				background: #cecece;
-			}
-			.container {
-				margin: 0 auto;
-				width: 800px;
-			}
-			canvas {
-				background: #fff;
-			}
-		</style>
+		<script src="cocos2d-beta2.js"></script>
+		<script src="game.js"></script>
 	</head>
-	<body>
-		<div class="container">
-			<canvas id="game" width="800" height="600">
-			</canvas>
-		</div>
-		<script src="lib/jquery-2.0.2.min.js"></script>
-		<script src="core/game.js"></script>
-		<script src="core/app.js"></script>
-		<script src="core/events.js"></script>
-		<script src="core/windowEvents.js"></script>
-		<script src="helpers/collision.js"></script>
-		<script src="lib/class.js"></script>
-		<script src="core/characters.js"></script>
-	</body>
+    <body onload="runDemo()">
+        <div id="cocos2d-demo" style="width: 640px; height: 480px;">
+        </div>
+    </body>
 </html>

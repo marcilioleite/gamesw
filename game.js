@@ -12,12 +12,18 @@ var sprite = null
 
 function yield() {
 	gameData.money += 10
-	gui.moneyLabel.string = gameData.money.toString()
+	var money = "$ "+gameData.money.toString()
+	gui.moneyLabel.string = money
 }
 
 function ticTac() {
 	gameData.time++
-	gui.timeLabel.string = gameData.time.toString()
+	var minutes = Math.floor(gameData.time / 60)
+		minutes = minutes < 10 ? "0"+minutes : minutes  
+	var seconds = gameData.time - minutes * 60
+		seconds = seconds < 10 ? "0"+seconds : seconds
+		
+	gui.timeLabel.string = minutes + ":" + seconds
 }
 
 function PirateBay () {
@@ -26,14 +32,14 @@ function PirateBay () {
     var s = cc.Director.sharedDirector.winSize
 
     gui.timeLabel = new cc.Label({
-    	string: gameData.time.toString(),
+    	string: "00:00",
     	fontName: 'Londrina Solid',
     	fontSize: 30 
     })
-    gui.timeLabel.position = new cc.Point(50, 100)
+    gui.timeLabel.position = new cc.Point(s.width - 100, s.height - 50)
         
     gui.moneyLabel = new cc.Label({
-    	string: gameData.money.toString(),
+    	string: "$ 0",
     	fontName: 'Londrina Solid',
     	fontSize: 30 
     })

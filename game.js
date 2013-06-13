@@ -1,13 +1,20 @@
 var sprite = null
 
+function hello() {
+	console.log('hello')
+}
+
 function MouseDemo () {
     MouseDemo.superclass.constructor.apply(this, arguments)
     this.isMouseEnabled = true
     var s = cc.Director.sharedDirector.winSize
     
-    sprite = new cc.Sprite({ url: 'character.png' })
+    sprite = new cc.Sprite({ url: 'grossini.png' })
     sprite.position = { x: 200, y: 200 }
     sprite.speed = 100
+    
+    this.schedule({method: hello, interval: 1})
+    
     this.addChild(sprite)
 }
 

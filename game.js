@@ -7,14 +7,17 @@ function MouseDemo () {
     
     sprite = new cc.Sprite({ url: 'character.png' })
     sprite.position = { x: 200, y: 200 }
-    sprite.speed = 1
+    sprite.speed = 100
     this.addChild(sprite)
 }
 
 MouseDemo.inherit(cc.Layer, {
     mouseDown: function (event) {
-    	p = event.locationInCanvas
-    	var move = new cc.MoveTo({ duration: sprite.speed, position: new cc.Point(p.x, p.y)})
+    	start = sprite.position
+    	target = event.locationInCanvas
+    	var distance = Math.sqrt(Math.pow(target.x - start.x, 2) + Math.pow(target.y - start.y,2))
+    	var duration = distance / sprite.speed
+    	var move = new cc.MoveTo({ duration: duration, position: new cc.Point(target.x, target.y)})
 		sprite.runAction(move)
     },
 })
@@ -22,7 +25,7 @@ MouseDemo.inherit(cc.Layer, {
 function runDemo () {
     var director = cc.Director.sharedDirector
     director.attachInView(document.getElementById('cocos2d-demo'))
-    director.displayFPS = true
+    director.displayFPS = false
     
     var scene = new cc.Scene
     scene.addChild(new MouseDemo)
